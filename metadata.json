@@ -1,0 +1,5 @@
+{
+  "name": "Livestock Contaminant DB",
+  "description": "A comprehensive database system for tracking livestock emerging contaminants, managing toxicity data, and visualizing Adverse Outcome Pathways (AOP).",
+  "requestFramePermissions": []
+}
