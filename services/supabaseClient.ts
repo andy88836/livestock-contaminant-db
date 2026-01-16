@@ -1,13 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Supabase 配置
+// Supabase configuration
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-// 创建 Supabase 客户端
+// Create Supabase client
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// 表名常量
+// Table name constants
 export const TABLES = {
-  TOXICITY_CHICKEN_LD50: 'toxicity_chicken_ld50'
+  TOXICITY_CHICKEN_ORAL_LD50: 'Acute Toxicity_chicken_oral_LD50'
 } as const;

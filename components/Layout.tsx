@@ -5,11 +5,10 @@ interface LayoutProps {
   children: ReactNode;
   currentView: ViewState;
   setView: (v: ViewState) => void;
-  onExport: () => void;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children, currentView, setView, onExport }) => {
-  const navClass = (view: ViewState) => 
+export const Layout: React.FC<LayoutProps> = ({ children, currentView, setView }) => {
+  const navClass = (view: ViewState) =>
     `px-4 py-2 rounded-md text-sm font-medium transition cursor-pointer ${currentView === view ? 'bg-blue-700 text-white shadow' : 'text-blue-100 hover:bg-blue-600'}`;
 
   return (
@@ -27,17 +26,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, setView, 
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <button onClick={() => setView('DASHBOARD')} className={navClass('DASHBOARD')}>Dashboard</button>
-                <button onClick={() => setView('LIST')} className={navClass('LIST')}>Directory</button>
+                <button onClick={() => setView('TOXICITY')} className={navClass('TOXICITY')}>Toxicity Data</button>
               </div>
-            </div>
-            <div className="flex items-center gap-2">
-                 <button 
-                    onClick={onExport}
-                    className="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded border border-slate-700 flex items-center"
-                 >
-                    <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                    Export Data
-                 </button>
             </div>
           </div>
         </div>
@@ -51,8 +41,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, setView, 
       <footer className="bg-white border-t border-slate-200 mt-auto">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <p className="text-center text-xs text-slate-400">
-            © 2024 Livestock Emerging Contaminant Database System. 
-            <br/>Designed for environmental risk assessment. Prototype Build.
+            © 2025 Livestock Toxicity Database. Data source: Supabase.
           </p>
         </div>
       </footer>

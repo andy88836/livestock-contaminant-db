@@ -57,43 +57,37 @@ export interface AOPData {
   edges: AOPEdge[];
 }
 
-export type ViewState = 'DASHBOARD' | 'LIST' | 'DETAIL' | 'COMPARE';
+export type ViewState = 'DASHBOARD' | 'TOXICITY';
 
-// ============ Supabase 毒性数据库相关类型 ============
+// ============ Supabase Toxicity Database Types ============
 
 /**
- * 鸡口服急性毒性 LD50 数据记录
+ * Chicken Oral Acute Toxicity LD50 Data Record
+ * Column names match Supabase table "Acute Toxicity_chicken_oral_LD50"
  */
 export interface ToxicityRecord {
-  id: string;                      // TAID (如 TOX-1273)
-  name: string;                    // 化学品名称
-  iupac_name?: string | null;      // IUPAC 标准名称
-  pubchem_cid?: number | null;     // PubChem CID
-  canonical_smiles?: string | null; // SMILES 结构式
-  inchikey?: string | null;        // InChIKey
-  toxicity_value: number;          // LD50 毒性值
-  toxicity_unit: string;           // 毒性单位 (mg/kg)
-  test_organism: string;           // 试验生物 (Chicken)
-  administration_route: string;    // 给药方式 (Oral)
-  endpoint: string;                // 检测指标 (LD50)
-  category?: string | null;        // 化学品分类
-  risk_level?: string | null;      // 风险等级 (High/Medium/Low/Very Low)
-  created_at?: string;             // 创建时间
+  TAID: string;                    // Toxicity data ID (e.g., TOX-1273)
+  Name: string;                    // Chemical name
+  "IUPAC Name"?: string | null;    // IUPAC standard name
+  "PubChem CID"?: number | null;   // PubChem CID
+  "Canonical SMILES"?: string | null; // SMILES structure
+  InChIKey?: string | null;        // InChIKey
+  "Toxicity Value": number;        // LD50 toxicity value
 }
 
 /**
- * 风险等级枚举
+ * Risk level enumeration
  */
 export enum ToxicityRiskLevel {
-  HIGH = 'High',           // 高毒 (LD50 < 50 mg/kg)
-  MEDIUM = 'Medium',       // 中毒 (50-500 mg/kg)
-  LOW = 'Low',            // 低毒 (500-5000 mg/kg)
-  VERY_LOW = 'Very Low',  // 实际无毒 (> 5000 mg/kg)
-  UNKNOWN = 'Unknown'      // 未知
+  HIGH = 'High',           // High toxicity (LD50 < 50 mg/kg)
+  MEDIUM = 'Medium',       // Moderate toxicity (50-500 mg/kg)
+  LOW = 'Low',            // Low toxicity (500-5000 mg/kg)
+  VERY_LOW = 'Very Low',  // Practically non-toxic (> 5000 mg/kg)
+  UNKNOWN = 'Unknown'      // Unknown
 }
 
 /**
- * 化学品分类枚举
+ * Chemical category enumeration
  */
 export enum ChemicalCategory {
   ORGANOCHLORINE_PESTICIDE = 'Organochlorine Pesticide',
@@ -108,7 +102,7 @@ export enum ChemicalCategory {
 }
 
 /**
- * 筛选选项
+ * Filter options
  */
 export interface FilterOptions {
   search?: string;
@@ -119,7 +113,7 @@ export interface FilterOptions {
 }
 
 /**
- * 统计数据
+ * Statistics data
  */
 export interface StatisticsData {
   total: number;
